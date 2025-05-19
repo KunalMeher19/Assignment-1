@@ -1,0 +1,1 @@
+// ConversationDetails.tsx - Placeholder content

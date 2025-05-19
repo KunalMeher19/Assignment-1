@@ -1,0 +1,1 @@
+// ChatMessage.tsx - Placeholder content
