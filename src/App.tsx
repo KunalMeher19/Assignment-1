@@ -18,7 +18,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState("conversation")
   const [activeRightTab, setActiveRightTab] = useState("details")
   const [currentSuggestions, setCurrentSuggestions] = useState(initialSuggestions)
-  
+
   const [conversationMessages, setConversationMessages] = useState<Record<number, ChatMessage[]>>(initialConversationMessages)
   const [chatMessages, setChatMessages] = useState(conversationMessages[defaultConversations[0].id] || [])
   const [aiInput, setAiInput] = useState("")
@@ -110,35 +110,54 @@ export default function App() {
           onSubmitAI={() => {
             if (!aiInput.trim()) return
 
-            const newUserMessage: AiMessage = {
+            const userMsg = {
               id: Date.now(),
-              role: "user" as AiMessage["role"],
+              role: "user" as const,
               content: aiInput,
               isNew: true,
             }
 
-            const newAiMessage: AiMessage = {
+            const assistantMsg = {
               id: Date.now() + 1,
-              role: "assistant" as AiMessage["role"],
-              content: "Thanks for your question. Here's an answer from AI...",
+              role: "assistant" as const,
+              content: "Here's a response from the AI based on your question.",
               isNew: true,
             }
 
-            const updated: AiMessage[] = [...aiConversation, newUserMessage, newAiMessage]
-            setAiConversation(updated)
-            setAiInput("")
-            setHasAskedAi(true)
-
+            // Add user message immediately
+            const userOnly = [...aiConversation, userMsg]
+            setAiConversation(userOnly)
             setAiConversations((prev) => ({
               ...prev,
-              [activeConversation.id]: updated,
+              [activeConversation.id]: userOnly,
             }))
 
+            setHasAskedAi(true)
             setHasAskedAiMap((prev) => ({
               ...prev,
               [activeConversation.id]: true,
             }))
-          }}
+
+            setAiInput("")
+
+            // Delay AI response by 1 second
+            setTimeout(() => {
+              const updated = [...userOnly, assistantMsg]
+              setAiConversation(updated)
+              setAiConversations((prev) => ({
+                ...prev,
+                [activeConversation.id]: updated,
+              }))
+
+              // Optional: remove animation flag after response
+              setTimeout(() => {
+                setAiConversation((prev) =>
+                  prev.map((msg) => ({ ...msg, isNew: false }))
+                )
+              }, 300)
+            }, 1000) 
+          }
+          }
           hasAskedAi={hasAskedAi}
           currentSuggestions={currentSuggestions}
           onSuggestionClick={() => { }}

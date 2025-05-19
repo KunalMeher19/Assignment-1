@@ -39,6 +39,16 @@ export default function SidebarRight({
   aiChatContainerRef,
   onScrollAI,
 }: SidebarRightProps) {
+  
+  const handleScroll = () => {
+    if (aiChatContainerRef.current) {
+      const container = aiChatContainerRef.current
+      const isScrolledToBottom =
+        Math.abs(container.scrollHeight - container.clientHeight - container.scrollTop) < 10
+      onScrollAI(isScrolledToBottom)
+    }
+  }
+
   return (
     <>
       <div
@@ -85,7 +95,7 @@ export default function SidebarRight({
                 messages={aiConversation}
                 hasAsked={hasAskedAi}
                 containerRef={aiChatContainerRef}
-                onScroll={onScrollAI}
+                onScroll={handleScroll}
                 onAddToComposer={(text: string) => setAiInput(text)}
               />
               <SuggestionList
