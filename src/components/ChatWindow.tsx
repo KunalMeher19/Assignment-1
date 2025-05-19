@@ -1,8 +1,8 @@
 import { useEffect } from "react"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
+import { Button } from "./ui/button"
 import { ChevronDown, Clock, Send, Sparkles, X } from "lucide-react"
-import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip"
+import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from "./ui/tooltip"
 
 interface ChatWindowProps {
   activeConversation: any

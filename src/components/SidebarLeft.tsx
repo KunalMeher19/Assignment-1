@@ -1,13 +1,13 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "./ui/button"
 import { ChevronLeft } from "lucide-react"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import { User } from "lucide-react"
-import { ConversationType } from "../data"
+import type { Conversation } from "../data"
 
 interface SidebarLeftProps {
-  conversations: ConversationType[]
-  activeConversation: ConversationType
-  setActiveConversation: (conv: ConversationType) => void
+  conversations: Conversation[]
+  activeConversation: Conversation
+  setActiveConversation: (conv: Conversation) => void
   chatMessages: any[]
   aiConversation: any[]
   hasAskedAi: boolean

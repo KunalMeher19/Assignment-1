@@ -1,10 +1,10 @@
 import { ChevronRight, ExternalLink, Sparkles } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Button } from "./ui/button"
 import AIChatPanel from "./AIChatPanel"
 import AIPromptInput from "./AIPromptInput"
 import SuggestionList from "./SuggestionList"
-import ConversationDetails from "./ConversationDetails"
-import { ConversationDetailsType, SuggestionType } from "../data"
+import ConversationDetail from "./ConversationDetails"
+import type { ConversationDetails, Suggestion } from "../data"
 
 interface SidebarRightProps {
   activeTab: string
@@ -15,10 +15,10 @@ interface SidebarRightProps {
   aiInput: string
   setAiInput: (val: string) => void
   onSubmitAI: () => void
-  onSuggestionClick: (s: SuggestionType) => void
+  onSuggestionClick: (s: Suggestion) => void
   hasAskedAi: boolean
-  currentSuggestions: SuggestionType[]
-  conversationDetails: ConversationDetailsType
+  currentSuggestions: Suggestion[]
+  conversationDetails: ConversationDetails
   aiChatContainerRef: React.RefObject<HTMLDivElement>
   onScrollAI: (atBottom: boolean) => void
 }
@@ -78,7 +78,7 @@ export default function SidebarRight({
         {/* Content area */}
         <div className="flex-1 flex flex-col relative overflow-auto">
           {activeTab === "details" ? (
-            <ConversationDetails details={conversationDetails} />
+            <ConversationDetail details={conversationDetails} />
           ) : (
             <>
               <AIChatPanel

@@ -1,5 +1,5 @@
 import { ChevronDown } from "lucide-react"
-import { SuggestionType } from "../data"
+import type { SuggestionType } from "../data"
 
 interface SuggestionListProps {
   suggestions: SuggestionType[]
