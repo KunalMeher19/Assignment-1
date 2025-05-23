@@ -13,7 +13,7 @@ Check out the live version of the app here: [https://assignment-beyondchats-aam.
 - ⚛️ React
 - 📘 TypeScript
 - 🎨 CSS / Tailwind / Styled Components (mention your styling method)
-- 📦 Vite / CRA / Webpack (mention your bundler)
+- 📦 Vite 
 
 ---
 
