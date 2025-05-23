@@ -1,4 +1,4 @@
-# 🚀 Project Name
+# 🚀 Assignment(Ardhendu Abhishek Meher)
 
 A modern React + TypeScript web application. This project demonstrates scalable front-end architecture using TypeScript, React, and modern tooling.
 
