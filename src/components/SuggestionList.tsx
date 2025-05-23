@@ -3,11 +3,11 @@ import type { Suggestion } from "../data"
 
 interface SuggestionListProps {
   suggestions: Suggestion[]
-  onSuggestionClick: (s: Suggestion) => void
+  setAiInput: (val: string) => void
 }
 
-export default function SuggestionList({ suggestions, onSuggestionClick }: SuggestionListProps) {
-  
+export default function SuggestionList({ suggestions, setAiInput }: SuggestionListProps) {
+
   return (
     <div className="group border-t bg-gray-100 transition-all duration-300 ease-in-out overflow-hidden hover:max-h-40 max-h-10">
       <div className="p-4 pb-0 group-hover:pb-4">
@@ -21,7 +21,7 @@ export default function SuggestionList({ suggestions, onSuggestionClick }: Sugge
             <div
               key={sugg.id}
               className="bg-gray-200 text-gray-800 inline-block rounded-full px-3 py-1 text-sm cursor-pointer hover:bg-gray-300"
-              onClick={() => onSuggestionClick(sugg)}
+              onClick={() => setAiInput(sugg.text)}
             >
               💡 {sugg.text}
             </div>

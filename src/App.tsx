@@ -16,7 +16,7 @@ export default function App() {
   const [chatInput, setChatInput] = useState("")
   const [chatInputCollapsed, setChatInputCollapsed] = useState(false)
   const [activeTab, setActiveTab] = useState("conversation")
-  const [activeRightTab, setActiveRightTab] = useState("details")
+  const [activeRightTab, setActiveRightTab] = useState("copilot")
   const [currentSuggestions, setCurrentSuggestions] = useState(initialSuggestions)
 
   const [conversationMessages, setConversationMessages] = useState<Record<number, ChatMessage[]>>(initialConversationMessages)
@@ -162,7 +162,6 @@ export default function App() {
           }
           hasAskedAi={hasAskedAi}
           currentSuggestions={currentSuggestions}
-          onSuggestionClick={() => { }}
           conversationDetails={detailsData[activeConversation.id]}
           aiChatContainerRef={aiChatContainerRef}
           onScrollAI={setIsAiChatAtBottom}

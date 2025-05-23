@@ -17,7 +17,6 @@ interface SidebarRightProps {
   aiInput: string
   setAiInput: (val: string) => void
   onSubmitAI: () => void
-  onSuggestionClick: (s: Suggestion) => void
   hasAskedAi: boolean
   currentSuggestions: Suggestion[]
   conversationDetails: ConversationDetails
@@ -37,7 +36,6 @@ export default function SidebarRight({
   onSubmitAI,
   hasAskedAi,
   currentSuggestions,
-  onSuggestionClick,
   conversationDetails,
   aiChatContainerRef,
   onScrollAI,
@@ -89,7 +87,7 @@ export default function SidebarRight({
               />
               <SuggestionList
                 suggestions={currentSuggestions}
-                onSuggestionClick={onSuggestionClick}
+                setAiInput={setAiInput}
               />
               <AIPromptInput
                 input={aiInput}
