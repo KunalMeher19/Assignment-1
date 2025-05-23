@@ -5,9 +5,9 @@ import { Copy, ChevronDown } from "lucide-react"
 interface AIChatPanelProps {
   messages: any[]
   hasAsked: boolean
+  setChatInput: (val: string) => void
   containerRef: React.RefObject<HTMLDivElement>
   onScroll: (atBottom: boolean) => void
-  onAddToComposer: (text: string) => void
 }
 
 export default function AIChatPanel({
@@ -15,7 +15,7 @@ export default function AIChatPanel({
   hasAsked,
   containerRef,
   onScroll,
-  onAddToComposer,
+  setChatInput,
 }: AIChatPanelProps) {
   const handleScroll = () => {
     if (containerRef.current) {
@@ -83,7 +83,7 @@ export default function AIChatPanel({
                           variant="outline"
                           size="sm"
                           className="w-full flex items-center justify-center gap-1 text-blue-600"
-                          onClick={() => onAddToComposer(msg.content)}
+                          onClick={() => setChatInput(msg.content)}
                         >
                           <Copy className="h-4 w-4" />
                           <span>Add to composer</span>

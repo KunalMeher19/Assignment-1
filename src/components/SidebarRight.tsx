@@ -8,10 +8,12 @@ import type { ConversationDetails, Suggestion } from "../data"
 
 interface SidebarRightProps {
   activeTab: string
+  setChatInput: (val: string) => void
   setActiveTab: (tab: string) => void
   collapsed: boolean
   setCollapsed: (b: boolean) => void
   aiConversation: any[]
+  setAiConversation: (messages: any[]) => void
   aiInput: string
   setAiInput: (val: string) => void
   onSubmitAI: () => void
@@ -29,6 +31,7 @@ export default function SidebarRight({
   collapsed,
   setCollapsed,
   aiConversation,
+  setChatInput,
   aiInput,
   setAiInput,
   onSubmitAI,
@@ -39,38 +42,26 @@ export default function SidebarRight({
   aiChatContainerRef,
   onScrollAI,
 }: SidebarRightProps) {
-  
-  const handleScroll = () => {
-    if (aiChatContainerRef.current) {
-      const container = aiChatContainerRef.current
-      const isScrolledToBottom =
-        Math.abs(container.scrollHeight - container.clientHeight - container.scrollTop) < 10
-      onScrollAI(isScrolledToBottom)
-    }
-  }
 
   return (
     <>
       <div
-        className={`border-l flex flex-col transition-all duration-300 ease-in-out ${
-          collapsed ? "w-0 opacity-0 overflow-hidden" : "w-72"
-        }`}
+        className={`border-l flex flex-col transition-all duration-300 ease-in-out ${collapsed ? "w-0 opacity-0 overflow-hidden" : "w-72"
+          }`}
       >
         {/* Tabs */}
         <div className="flex items-center border-b">
           <div
-            className={`flex items-center px-4 py-3 cursor-pointer ${
-              activeTab === "copilot" ? "text-blue-600 font-medium border-b-2 border-blue-600" : "text-gray-700"
-            }`}
+            className={`flex items-center px-4 py-3 cursor-pointer ${activeTab === "copilot" ? "text-blue-600 font-medium border-b-2 border-blue-600" : "text-gray-700"
+              }`}
             onClick={() => setActiveTab("copilot")}
           >
             <Sparkles className="h-4 w-4 mr-2" />
             <span>Copilot</span>
           </div>
           <div
-            className={`px-4 py-3 cursor-pointer ${
-              activeTab === "details" ? "text-blue-600 font-medium border-b-2 border-blue-600" : "text-gray-700"
-            }`}
+            className={`px-4 py-3 cursor-pointer ${activeTab === "details" ? "text-blue-600 font-medium border-b-2 border-blue-600" : "text-gray-700"
+              }`}
             onClick={() => setActiveTab("details")}
           >
             Details
@@ -87,16 +78,14 @@ export default function SidebarRight({
 
         {/* Content area */}
         <div className="flex-1 flex flex-col relative overflow-auto">
-          {activeTab === "details" ? (
-            <ConversationDetail details={conversationDetails} />
-          ) : (
+          {activeTab === "copilot" ? (
             <>
               <AIChatPanel
                 messages={aiConversation}
                 hasAsked={hasAskedAi}
                 containerRef={aiChatContainerRef}
-                onScroll={handleScroll}
-                onAddToComposer={(text: string) => setAiInput(text)}
+                onScroll={onScrollAI}
+                setChatInput={setChatInput}
               />
               <SuggestionList
                 suggestions={currentSuggestions}
@@ -108,6 +97,9 @@ export default function SidebarRight({
                 onSubmit={onSubmitAI}
               />
             </>
+
+          ) : (
+            <ConversationDetail details={conversationDetails} />
           )}
         </div>
       </div>

@@ -105,6 +105,8 @@ export default function App() {
           collapsed={rightSidebarCollapsed}
           setCollapsed={setRightSidebarCollapsed}
           aiConversation={aiConversation}
+          setChatInput={setChatInput}
+          setAiConversation={setAiConversation}
           aiInput={aiInput}
           setAiInput={setAiInput}
           onSubmitAI={() => {

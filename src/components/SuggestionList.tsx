@@ -1,12 +1,13 @@
 import { ChevronDown } from "lucide-react"
-import type { SuggestionType } from "../data"
+import type { Suggestion } from "../data"
 
 interface SuggestionListProps {
-  suggestions: SuggestionType[]
-  onSuggestionClick: (s: SuggestionType) => void
+  suggestions: Suggestion[]
+  onSuggestionClick: (s: Suggestion) => void
 }
 
 export default function SuggestionList({ suggestions, onSuggestionClick }: SuggestionListProps) {
+  
   return (
     <div className="group border-t bg-gray-100 transition-all duration-300 ease-in-out overflow-hidden hover:max-h-40 max-h-10">
       <div className="p-4 pb-0 group-hover:pb-4">
