@@ -92,7 +92,7 @@ export default function ChatWindow({
       </div>
 
       {/* Input Section */}
-      <div className="border-t">
+      <div className="flex-end border-t">
         <div className="flex items-center justify-between p-3">
           <div
             className="flex items-center gap-1 text-sm text-gray-500 cursor-pointer"
