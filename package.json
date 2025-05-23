@@ -3,12 +3,12 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "lint": "eslint . --ext .ts,.tsx"
-  },
+    "scripts": {
+      "dev": "vite",
+      "build": "tsc && vite build",
+      "preview": "vite preview",
+      "lint": "eslint . --ext .ts,.tsx"
+    },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.9",
     "@radix-ui/react-scroll-area": "^1.1.6",
