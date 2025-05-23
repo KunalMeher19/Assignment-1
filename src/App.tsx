@@ -33,7 +33,7 @@ export default function App() {
 
   const [chatInput, setChatInput] = useState("")
   const [chatInputCollapsed, setChatInputCollapsed] = useState(false)
-  const [activeTab, setActiveTab] = useState("conversation")
+  const [activeTab, setActiveTab] = useState("tickets")
   const [activeRightTab, setActiveRightTab] = useState("copilot")
   const [currentSuggestions, setCurrentSuggestions] = useState(initialSuggestions)
 
@@ -265,6 +265,7 @@ export default function App() {
               conversationDetails={detailsData[activeConversation.id]}
               aiChatContainerRef={aiChatContainerRef}
               onScrollAI={setIsAiChatAtBottom}
+              setMobileView={setMobileView}
             />
           </div>
         </div>
@@ -311,12 +312,12 @@ export default function App() {
                   style={{
                     // Fill available vertical space in grid/flex layouts
                     flex: "1 1 0%",
-                    minHeight: 0,
-                    maxHeight: "100vh",
+                    minHeight: "95vh",
+                    maxHeight: "95vh",
                     overflowY: "auto"
                   }}
                 >
-                  <div className="flex-1 overflow-auto">
+                  <div className="flex-1 overflow-auto pt-5">
                     {defaultConversations.map((conversation) => (
                       <div
                         key={conversation.id}
@@ -549,11 +550,6 @@ export default function App() {
                   }}
                 >
                   <>
-                    {/* <div
-                      className={`border-l flex flex-col transition-all duration-300 ease-in-out ${rightSidebarCollapsed ? "w-0 opacity-0 overflow-hidden" : ""
-                        }`}
-                    > */}
-                    {/* Tabs */}
                     <div className="flex items-center border-b"
                       onScroll={aiHandleScroll}>
                       <div
@@ -588,6 +584,7 @@ export default function App() {
                             containerRef={aiChatContainerRef}
                             onScroll={setIsAiChatAtBottom}
                             setChatInput={setChatInput}
+                            setMobileView={setMobileView}
                           />
                           <SuggestionList
                             suggestions={currentSuggestions}

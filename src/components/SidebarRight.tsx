@@ -22,6 +22,7 @@ interface SidebarRightProps {
   conversationDetails: ConversationDetails
   aiChatContainerRef: React.RefObject<HTMLDivElement>
   onScrollAI: (atBottom: boolean) => void
+  setMobileView: (val: "tickets" | "chat" | "ai") => void
 }
 
 export default function SidebarRight({
@@ -34,6 +35,7 @@ export default function SidebarRight({
   aiInput,
   setAiInput,
   onSubmitAI,
+  setMobileView,
   hasAskedAi,
   currentSuggestions,
   conversationDetails,
@@ -84,6 +86,7 @@ export default function SidebarRight({
                 containerRef={aiChatContainerRef}
                 onScroll={onScrollAI}
                 setChatInput={setChatInput}
+                setMobileView={setMobileView}
               />
               <SuggestionList
                 suggestions={currentSuggestions}

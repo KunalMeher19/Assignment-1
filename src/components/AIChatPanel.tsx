@@ -1,6 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import { Button } from "./ui/button"
 import { Copy, ChevronDown } from "lucide-react"
+import { useIsMobile } from "../hooks/use-mobile"
 
 interface AIChatPanelProps {
   messages: any[]
@@ -8,6 +9,7 @@ interface AIChatPanelProps {
   setChatInput: (val: string) => void
   containerRef: React.RefObject<HTMLDivElement>
   onScroll: (atBottom: boolean) => void
+  setMobileView: (val: "tickets" | "chat" | "ai") => void
 }
 
 export default function AIChatPanel({
@@ -16,6 +18,7 @@ export default function AIChatPanel({
   containerRef,
   onScroll,
   setChatInput,
+  setMobileView,
 }: AIChatPanelProps) {
   const handleScroll = () => {
     if (containerRef.current) {
@@ -25,6 +28,7 @@ export default function AIChatPanel({
       onScroll(isScrolledToBottom)
     }
   }
+  const isMobile = useIsMobile()
 
   return (
     <div
@@ -83,7 +87,10 @@ export default function AIChatPanel({
                           variant="outline"
                           size="sm"
                           className="w-full flex items-center justify-center gap-1 text-blue-600"
-                          onClick={() => setChatInput(msg.content)}
+                          onClick={() => {
+                            setChatInput(msg.content)
+                            setMobileView("chat")
+                          }}
                         >
                           <Copy className="h-4 w-4" />
                           <span>Add to composer</span>
