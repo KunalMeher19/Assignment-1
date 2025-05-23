@@ -9,25 +9,24 @@ interface SuggestionListProps {
 export default function SuggestionList({ suggestions, setAiInput }: SuggestionListProps) {
 
   return (
-    <div className="group border-t bg-gray-100 transition-all duration-300 ease-in-out overflow-hidden hover:max-h-40 max-h-10">
-      <div className="p-4 pb-0 group-hover:pb-4">
-        <div className="text-sm font-medium text-gray-500 mb-2 flex items-center justify-between">
-          <span>Suggested</span>
-          <ChevronDown className="h-4 w-4 text-gray-500 group-hover:rotate-180 transition-transform duration-300" />
-        </div>
-
-        <div className="flex flex-wrap gap-2 h-0 opacity-0 group-hover:h-auto group-hover:opacity-100 transition-all duration-300">
-          {suggestions.map((sugg) => (
-            <div
-              key={sugg.id}
-              className="bg-gray-200 text-gray-800 inline-block rounded-full px-3 py-1 text-sm cursor-pointer hover:bg-gray-300"
-              onClick={() => setAiInput(sugg.text)}
+    <div className="relative">
+      <div className="absolute bottom-[1px] right-4 z-50 group">
+        <button className="bg-gradient-to-tl from-yellow-300 to-yellow-100 text-white p-2 rounded-full shadow-lg backdrop-blur-lg hover:scale-105 transition-transform">
+          💡
+        </button>
+        <div className="absolute bottom-[110%] right-0 w-64 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md border border-gray-300 dark:border-slate-700 rounded-lg shadow-xl opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-96 transition-all duration-300 space-y-1 p-3">
+          {suggestions.map((s) => (
+            <button
+              key={s.id}
+              onClick={() => setAiInput(s.text)}
+              className="text-sm w-full text-left bg-gray-100 dark:bg-slate-700 dark:text-white px-3 py-2 rounded hover:bg-gray-200 dark:hover:bg-slate-600"
             >
-              💡 {sugg.text}
-            </div>
+              {s.text}
+            </button>
           ))}
         </div>
       </div>
     </div>
+
   )
 }

@@ -17,7 +17,7 @@ export default function AIPromptInput({ input, setInput, onSubmit }: AIPromptInp
   }
 
   return (
-    <div className="p-4 border-t bg-white">
+    <div className="p-4 border-t bg-gradient-to-l from-pink-100 to-wheat-100 shadow-md rounded-lg">
       <form
         onSubmit={(e) => {
           e.preventDefault()

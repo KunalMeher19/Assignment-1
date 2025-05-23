@@ -33,7 +33,7 @@ export default function AIChatPanel({
   return (
     <div
       ref={containerRef}
-      className="flex-1 overflow-auto scroll-smooth"
+      className="flex-1 overflow-auto scroll-smooth rounded-lg bg-gradient-to-br from-purple-100 to-wheat-100"
       onScroll={handleScroll}
     >
       {hasAsked ? (
@@ -69,7 +69,7 @@ export default function AIChatPanel({
                   </div>
                   <div className="flex-1">
                     <div className="font-medium text-sm">Fin</div>
-                    <div className="bg-indigo-100 rounded-lg p-3 text-sm mt-1">
+                    <div className="bg-gradient-to-br from-indigo-200 to-indigo-100 rounded-lg p-3 text-sm mt-1">
                       {msg.content.split("\n").map((p: string, i: number) => (
                         <p key={i} className={i > 0 ? "mt-2" : ""}>
                           {p}
@@ -105,7 +105,7 @@ export default function AIChatPanel({
           ))}
         </div>
       ) : (
-        <div className="flex-1 flex flex-col items-center justify-center p-4">
+        <div className="flex flex-col items-center align-middle justify-center p-4">
           <div className="bg-black text-white p-2 rounded-md mb-4">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path

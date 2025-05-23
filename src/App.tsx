@@ -273,23 +273,23 @@ export default function App() {
 
       {isMobile && (
         <div className="max-h-screen">
-          <div className=" w-full h-10 bg-white dark:bg-slate-900 border-t flex justify-around p-5">
+          <div className=" w-full rounded-xl h-14 align-middle bg-gray-400 dark:bg-slate-900 border-t flex justify-around p-5">
             <button onClick={() => setMobileView("tickets")} className={cn("relative px-4 ", mobileView === "tickets" && "text-blue-500 font-bold")}>
               🎟️
               {mobileView === "tickets" && (
-                <div className="absolute bottom-0 top-0 left-1/2 -translate-x-1/2 w-6 h-1 rounded-full bg-blue-500 mt-1" />
+                <div className="absolute top-5 left-1/2 -translate-x-1/2  w-6 h-1  rounded-full bg-blue-500 mt-1" />
               )}
             </button>
             <button onClick={() => setMobileView("chat")} className={cn("relative px-4", mobileView === "chat" && "text-blue-500 font-bold")}>
               💬
               {mobileView === "chat" && (
-                <div className="absolute bottom-0 top-0 left-1/2 -translate-x-1/2 w-6 h-1 rounded-full bg-blue-500 mt-1" />
+                <div className="absolute top-5 left-1/2 -translate-x-1/2 w-6 h-1 rounded-full bg-blue-500 mt-1" />
               )}
             </button>
             <button onClick={() => setMobileView("ai")} className={cn("relative px-4", mobileView === "ai" && "text-blue-500 font-bold")}>
               🤖
               {mobileView === "ai" && (
-                <div className="absolute bottom-0 top-0 left-1/2 -translate-x-1/2 w-6 h-1 rounded-full bg-blue-500 mt-1" />
+                <div className="absolute top-5 left-1/2 -translate-x-1/2 w-6 h-1 rounded-full bg-blue-500 mt-1" />
               )}
             </button>
           </div>

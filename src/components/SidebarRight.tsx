@@ -46,7 +46,7 @@ export default function SidebarRight({
   return (
     <>
       <div
-        className={`border-l flex flex-col transition-all duration-300 ease-in-out ${collapsed ? "w-0 opacity-0 overflow-hidden" : "w-72"
+        className={`border-l rounded-lg  flex flex-col transition-all duration-300 ease-in-out ${collapsed ? "w-0 opacity-0 overflow-hidden" : "w-72"
           }`}
       >
         {/* Tabs */}
