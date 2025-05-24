@@ -494,7 +494,15 @@ export default function App() {
                             <TooltipProvider>
                               <Tooltip>
                                 <TooltipTrigger asChild>
-                                  <Button type="button" variant="ghost" size="icon" className="h-8 w-8 rounded-full">
+                                  <Button 
+                                  type="button" 
+                                  variant="ghost" 
+                                  size="icon" 
+                                  className="h-8 w-8 rounded-full"
+                                  onClick={() => {
+                                    setMobileView("ai")
+                                  }}
+                                  >
                                     <Sparkles className="h-4 w-4 text-gray-500" />
                                   </Button>
                                 </TooltipTrigger>
