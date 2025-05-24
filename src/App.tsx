@@ -163,6 +163,7 @@ export default function App() {
               activeConversation={activeConversation}
               chatMessages={chatMessages}
               chatInput={chatInput}
+              setActiveConversation={setActiveConversation}
               setChatInput={setChatInput}
               onSubmitChat={() => {
                 if (!chatInput.trim()) return;
@@ -403,7 +404,16 @@ export default function App() {
                     <div className="font-semibold">{activeConversation.name}</div>
                     <div className="flex items-center gap-2">
                       <Clock className="h-4 w-4 text-gray-500" />
-                      <Button size="sm" variant="outline">Close</Button>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => {
+                          setChatInput("")
+                          setMobileView("tickets")
+                        }}
+                      >
+                        Close
+                      </Button>
                     </div>
                   </div>
 

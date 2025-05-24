@@ -62,7 +62,7 @@ export default function SidebarLeft({
             <div
               key={conversation.id}
               className={`p-3 border-b cursor-pointer hover:bg-gray-50 ${
-                activeConversation.id === conversation.id ? "bg-gray-50" : ""
+                activeConversation.id === conversation.id ? "bg-gray-200" : ""
               }`}
               onClick={() => {
                 setConversationMessages({
