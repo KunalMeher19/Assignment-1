@@ -43,7 +43,8 @@ export default function App() {
   const [aiConversations, setAiConversations] = useState<Record<number, AiMessage[]>>({})
   const [aiConversation, setAiConversation] = useState<AiMessage[]>([])
   const [hasAskedAiMap, setHasAskedAiMap] = useState<Record<number, boolean>>({})
-  const [hasAskedAi, setHasAskedAi] = useState(false)
+  const [swipeDirection, setSwipeDirection] = useState<"left" | "right">("right");
+  const [hasAskedAi, setHasAskedAi] = useState(false);
 
 
   const chatContainerRef = useRef<HTMLDivElement>(null)
@@ -53,17 +54,20 @@ export default function App() {
 
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => {
+      setSwipeDirection("left");
       if (mobileView === "tickets") setMobileView("chat");
       else if (mobileView === "chat") setMobileView("ai");
       else if (mobileView === "ai") setMobileView("tickets");
     },
     onSwipedRight: () => {
+      setSwipeDirection("right");
       if (mobileView === "ai") setMobileView("chat");
       else if (mobileView === "chat") setMobileView("tickets");
       else if (mobileView === "tickets") setMobileView("ai");
     },
-    delta: 50 // Minimum swipe distance
+    delta: 50
   });
+
 
   const handleScroll = () => {
     if (chatContainerRef.current) {
@@ -295,15 +299,15 @@ export default function App() {
             </button>
           </div>
 
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             <div {...swipeHandlers} className={cn("flex-1 max-h-screen overflow-hidden", isMobile ? "flex flex-col" : "grid grid-cols-12 gap-2")}>
 
               {(mobileView === "tickets") && (
                 <motion.div
                   key="tickets"
-                  initial={{ x: -100, opacity: 0 }}
+                  initial={{ x: swipeDirection === "left" ? 100 : -100, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: -100, opacity: 0 }}
+                  exit={{ x: swipeDirection === "left" ? -100 : 100, opacity: 0 }}
                   transition={{ duration: 0.3 }}
                   className={cn(
                     isMobile ? "w-full" : "lg:col-span-3",
@@ -382,9 +386,9 @@ export default function App() {
               {(mobileView === "chat") && (
                 <motion.div
                   key="chat"
-                  initial={{ x: -100, opacity: 0 }}
+                  initial={{ x: swipeDirection === "left" ? 100 : -100, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: -100, opacity: 0 }}
+                  exit={{ x: swipeDirection === "left" ? -100 : 100, opacity: 0 }}
                   transition={{ duration: 0.3 }}
                   className={cn(
                     isMobile ? "w-full" : "lg:col-span-6",
@@ -543,9 +547,9 @@ export default function App() {
               {(mobileView === "ai") && (
                 <motion.div
                   key="ai"
-                  initial={{ x: -100, opacity: 0 }}
+                  initial={{ x: swipeDirection === "left" ? 100 : -100, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: -100, opacity: 0 }}
+                  exit={{ x: swipeDirection === "left" ? -100 : 100, opacity: 0 }}
                   transition={{ duration: 0.3 }}
                   className={cn(
                     isMobile ? "w-full" : "lg:col-span-6",
